@@ -784,6 +784,45 @@ elif pagina == "detalhe":
         fig_top.update_layout(height=400, margin=dict(t=10, r=120), xaxis_visible=False, showlegend=False)
         st.plotly_chart(fig_top, use_container_width=True)
 
+    # ---- PROJEÇÃO DOS PRÓXIMOS MESES ----
+    st.markdown("---")
+    st.markdown("### 🔮 Projeção dos Próximos Meses")
+
+    todos_meses_reais = sorted([m for m in df['Ano_Mes'].unique() if m < '2026-04'])
+    ultimos_6m_det = todos_meses_reais[-6:] if len(todos_meses_reais) >= 6 else todos_meses_reais
+    df_base_det = df[df['Ano_Mes'].isin(ultimos_6m_det)]
+
+    rec_media_det = df_base_det[df_base_det['Tipo'] == 'INCOME'].groupby('Ano_Mes')['Valor_num'].sum().mean()
+    desp_media_det = df_base_det[df_base_det['Tipo'] == 'EXPENSE'].groupby('Ano_Mes')['Valor_num'].sum().mean()
+
+    meses_proj_det = [
+        ('Abr/26', True, True), ('Mai/26', True, True), ('Jun/26', True, True),
+        ('Jul/26', False, False), ('Ago/26', False, False), ('Set/26', False, False)
+    ]
+
+    dados_proj_det = []
+    for mes, tem_parcela, tem_protesto in meses_proj_det:
+        rec = rec_media_det * 0.95
+        desp = desp_media_det
+        if tem_parcela:
+            desp += 2805
+        if tem_protesto:
+            desp += 2000
+        saldo = rec - desp
+        dados_proj_det.append({
+            'Mês': mes, 'Entra': fmt_brl(rec), 'Sai': fmt_brl(desp),
+            'Sobra': fmt_brl(saldo),
+            'Parcela Viagem': 'Sim' if tem_parcela else 'Acabou ✅',
+            'Protesto': 'R$ 2.000' if tem_protesto else 'Quitado ✅'
+        })
+
+    st.dataframe(pd.DataFrame(dados_proj_det), use_container_width=True, hide_index=True)
+
+    st.markdown("#### 🎯 Datas importantes")
+    st.success("✅ **Julho/2026** — Parcelas da viagem acabam! Alívio de R$ 2.805/mês")
+    st.success("✅ **Junho/2026** — Protestos quitados se pagar R$ 2.000/mês")
+    st.info("💡 **A partir de Julho** — Sem parcelas e sem protestos, sobra mais pra reserva!")
+
 
 # ============================================================
 # PAGINA 4 - ALERTAS
