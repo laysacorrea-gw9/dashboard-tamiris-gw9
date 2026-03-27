@@ -47,9 +47,20 @@ def mes_label_curto(ano_mes_str):
     return f"{MESES_PT_CURTO[dt.month]}/{str(dt.year)[2:]}"
 
 
-# Espaçamento do container principal apenas
+# CSS global — força tamanho de fonte consistente no cloud e local
 st.markdown("""
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    html, body, [class*="css"], .stMarkdown, .stText, p, div, span, label {
+        font-family: 'Inter', sans-serif !important;
+        font-size: 15px !important;
+    }
+    h1 { font-size: 28px !important; font-weight: 700 !important; }
+    h2 { font-size: 22px !important; font-weight: 700 !important; }
+    h3 { font-size: 18px !important; font-weight: 600 !important; }
+    .stSelectbox label, .stMultiSelect label { font-size: 14px !important; font-weight: 600 !important; }
+    .stDataFrame { font-size: 14px !important; }
     .main .block-container { padding-top: 1.5rem; max-width: 1400px; }
 </style>
 """, unsafe_allow_html=True)
