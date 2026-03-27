@@ -76,6 +76,33 @@ st.markdown("""
         border-color: rgba(255,255,255,0.15) !important;
     }
 
+    /* ── Botões inativos no sidebar ── */
+    section[data-testid="stSidebar"] button[kind="secondary"] {
+        background-color: rgba(255,255,255,0.08) !important;
+        border: 1px solid rgba(196,179,245,0.4) !important;
+        color: #c4b3f5 !important;
+    }
+    section[data-testid="stSidebar"] button[kind="secondary"]:hover {
+        background-color: rgba(255,255,255,0.15) !important;
+        color: #ffffff !important;
+    }
+    section[data-testid="stSidebar"] button[kind="secondary"] p {
+        color: #c4b3f5 !important;
+    }
+
+    /* ── File uploader no sidebar ── */
+    section[data-testid="stSidebar"] [data-testid="stFileUploader"] {
+        background-color: rgba(255,255,255,0.06) !important;
+        border: 1px dashed rgba(196,179,245,0.5) !important;
+        border-radius: 10px !important;
+    }
+    section[data-testid="stSidebar"] [data-testid="stFileUploader"] * {
+        color: #c4b3f5 !important;
+    }
+    section[data-testid="stSidebar"] [data-testid="stFileUploaderDropzone"] {
+        background-color: transparent !important;
+    }
+
     /* ── Widgets labels ── */
     .stSelectbox > label, .stMultiSelect > label { font-size: 14px; font-weight: 600; }
 </style>
