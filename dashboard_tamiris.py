@@ -596,7 +596,7 @@ if pagina == "mes":
                     hole=0.42,
                     texttemplate='<b>%{label}</b><br><b>%{customdata}</b>',
                     textposition='outside',
-                    textfont=dict(size=15, color='#2d3436'),
+                    textfont=dict(size=19, color='#2d3436'),
                     marker=dict(colors=cores_pizza, line=dict(width=2, color='white')),
                     pull=pull_pizza,
                     customdata=[fmt_brl(v) for v in valores_pizza],
@@ -612,7 +612,7 @@ if pagina == "mes":
                     texttemplate='<b>%{percent:.1%}</b>',
                     textposition='inside',
                     insidetextorientation='horizontal',
-                    textfont=dict(size=14, color='#2d3436'),
+                    textfont=dict(size=20, color='#2d3436'),
                     marker=dict(
                         colors=['rgba(0,0,0,0)'] * len(nomes_pizza),
                         line=dict(width=0, color='rgba(0,0,0,0)')
@@ -627,7 +627,7 @@ if pagina == "mes":
                     showlegend=False,
                     annotations=[dict(
                         text=f'<b>{fmt_brl(total_desp)}</b>',
-                        x=0.5, y=0.5, font_size=16, showarrow=False
+                        x=0.5, y=0.5, font_size=20, showarrow=False
                     )],
                     paper_bgcolor='rgba(0,0,0,0)',
                     plot_bgcolor='rgba(0,0,0,0)',
@@ -681,7 +681,7 @@ if pagina == "mes":
                     marker_color=cores_rec[:len(rec_cat)],
                     text=[f"<b>{fmt_brl(v)}</b>" for v in rec_cat.values],
                     textposition='outside',
-                    textfont=dict(size=26, color='#2d3436'),
+                    textfont=dict(size=20, color='#2d3436'),
                     hovertemplate='<b>%{customdata[0]}</b><br>%{customdata[1]}<extra></extra>',
                     customdata=[[cat, fmt_brl(v)] for cat, v in zip(rec_cat.index, rec_cat.values)],
                 )])
@@ -693,8 +693,8 @@ if pagina == "mes":
                     xaxis_title="",
                     yaxis_title="",
                     showlegend=False,
-                    xaxis=dict(range=[0, max_val * 2.8], visible=False),
-                    yaxis=dict(tickfont=dict(size=14, color='#2d3436')),
+                    xaxis=dict(range=[0, max_val * 2.4], visible=False),
+                    yaxis=dict(tickfont=dict(size=18, color='#2d3436')),
                     paper_bgcolor='rgba(0,0,0,0)',
                     plot_bgcolor='rgba(0,0,0,0)',
                 )
@@ -819,7 +819,7 @@ elif pagina == "detalhe":
             marker_color=cores_saldo,
             text=[f'<b>{fmt_brl(v)}</b>' for v in resumo_mensal['Saldo']],
             textposition='outside',
-            textfont=dict(size=14, color='#2d3436'),
+            textfont=dict(size=18, color='#2d3436'),
             hovertemplate='<b>%{x}</b><br>%{customdata}<extra></extra>',
             customdata=[fmt_brl(v) for v in resumo_mensal['Saldo']],
         ))
@@ -841,7 +841,7 @@ elif pagina == "detalhe":
                 x=x_corte - 0.6, y=y_max,
                 text="◀ <b>Passado</b>",
                 showarrow=False,
-                font=dict(size=16, color="#6c5ce7"),
+                font=dict(size=20, color="#6c5ce7"),
                 xanchor="right"
             )
             # Label FUTURO (direita)
@@ -849,7 +849,7 @@ elif pagina == "detalhe":
                 x=x_corte + 0.6, y=y_max,
                 text="<b>Futuro</b> ▶",
                 showarrow=False,
-                font=dict(size=16, color="#6c5ce7"),
+                font=dict(size=20, color="#6c5ce7"),
                 xanchor="left"
             )
 
@@ -858,7 +858,7 @@ elif pagina == "detalhe":
             margin=dict(t=40, b=20),
             yaxis_visible=False,
             showlegend=False,
-            xaxis=dict(title="", tickfont=dict(size=14, color='#2d3436')),
+            xaxis=dict(title="", tickfont=dict(size=18, color='#2d3436')),
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
         )
@@ -892,15 +892,15 @@ elif pagina == "detalhe":
                 text=[f'<b>{v/1000:.0f}k</b>' for v in d['Valor_num']],
                 textposition='inside',
                 insidetextanchor='middle',
-                textfont=dict(size=14, color='#2d3436'),
+                textfont=dict(size=18, color='#2d3436'),
             ))
 
         fig_fixvar.update_layout(
             barmode='stack',
             height=420, margin=dict(t=10, b=10),
-            yaxis=dict(tickformat=",.0f", tickfont=dict(size=14, color='#2d3436')),
-            xaxis=dict(tickfont=dict(size=14, color='#2d3436'), categoryorder='array', categoryarray=meses_ord),
-            legend=dict(orientation='h', yanchor='bottom', y=1.02, font=dict(size=14)),
+            yaxis=dict(tickformat=",.0f", tickfont=dict(size=18, color='#2d3436')),
+            xaxis=dict(tickfont=dict(size=18, color='#2d3436'), categoryorder='array', categoryarray=meses_ord),
+            legend=dict(orientation='h', yanchor='bottom', y=1.02, font=dict(size=18)),
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
         )
@@ -921,14 +921,14 @@ elif pagina == "detalhe":
                           '#74b9ff', '#a29bfe', '#55efc4'][:len(top_mae)],
             text=[f'<b>{fmt_brl(v)}</b>  ({fmt_brl(v/n_meses_reais)}/mês)' for v in top_mae.values],
             textposition='outside',
-            textfont=dict(size=15, color='#2d3436'),
+            textfont=dict(size=19, color='#2d3436'),
             hovertemplate='<b>%{y}</b><br>Total: %{customdata}<extra></extra>',
             customdata=[fmt_brl(v) for v in top_mae.values],
         )])
         fig_top.update_layout(
             height=380, margin=dict(t=10, r=20, l=10),
             xaxis=dict(visible=False, range=[0, top_mae.max() * 1.6]),
-            yaxis=dict(tickfont=dict(size=15, color='#2d3436')),
+            yaxis=dict(tickfont=dict(size=19, color='#2d3436')),
             showlegend=False,
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
