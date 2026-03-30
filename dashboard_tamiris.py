@@ -611,6 +611,7 @@ if pagina == "mes":
                     hole=0.42,
                     texttemplate='<b>%{percent:.1%}</b>',
                     textposition='inside',
+                    insidetextorientation='horizontal',
                     textfont=dict(size=14, color='#2d3436'),
                     marker=dict(
                         colors=['rgba(0,0,0,0)'] * len(nomes_pizza),
@@ -680,7 +681,7 @@ if pagina == "mes":
                     marker_color=cores_rec[:len(rec_cat)],
                     text=[f"<b>{fmt_brl(v)}</b>" for v in rec_cat.values],
                     textposition='outside',
-                    textfont=dict(size=13, color='#2d3436'),
+                    textfont=dict(size=26, color='#2d3436'),
                     hovertemplate='<b>%{customdata[0]}</b><br>%{customdata[1]}<extra></extra>',
                     customdata=[[cat, fmt_brl(v)] for cat, v in zip(rec_cat.index, rec_cat.values)],
                 )])
@@ -692,7 +693,7 @@ if pagina == "mes":
                     xaxis_title="",
                     yaxis_title="",
                     showlegend=False,
-                    xaxis=dict(range=[0, max_val * 2.2], visible=False),
+                    xaxis=dict(range=[0, max_val * 2.8], visible=False),
                     yaxis=dict(tickfont=dict(size=14, color='#2d3436')),
                     paper_bgcolor='rgba(0,0,0,0)',
                     plot_bgcolor='rgba(0,0,0,0)',
