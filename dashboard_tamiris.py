@@ -353,7 +353,7 @@ with st.sidebar:
         df = load_data(file_path=default_csv)
 
     if df is None:
-        st.error("Nenhum CSV encontrado.", icon=":material/error:")
+        st.error("Nenhum CSV encontrado.", icon="🔴")
         st.stop()
 
 # ============================================================
@@ -428,7 +428,7 @@ if pagina == "mes":
     if is_projecao:
         st.info(
             "**Projeção** — valores estimados baseados no padrão de consumo (Set/25 a Fev/26)",
-            icon=":material/auto_graph:"
+            icon="📈"
         )
 
     desp_fixas_mes = despesas_mes[despesas_mes['Categoria'].isin(CATEGORIAS_FIXAS)]['Valor_num'].sum()
@@ -982,9 +982,9 @@ elif pagina == "detalhe":
     )
 
     st.markdown("**Datas importantes**")
-    st.success("**Julho/2026** — Parcelas da viagem acabam! Alívio de R$ 2.805/mês", icon=":material/check_circle:")
-    st.success("**Junho/2026** — Protestos quitados se pagar R$ 2.000/mês", icon=":material/check_circle:")
-    st.info("**A partir de julho** — Sem parcelas e sem protestos, sobra mais pra reserva!", icon=":material/lightbulb:")
+    st.success("**Julho/2026** — Parcelas da viagem acabam! Alívio de R$ 2.805/mês", icon="✅")
+    st.success("**Junho/2026** — Protestos quitados se pagar R$ 2.000/mês", icon="✅")
+    st.info("**A partir de julho** — Sem parcelas e sem protestos, sobra mais pra reserva!", icon="💡")
 
 
 # ============================================================
@@ -1009,9 +1009,9 @@ elif pagina == "alertas":
             for mes, row in resumo.iterrows():
                 if row['Saldo'] < 0:
                     tem_negativo = True
-                    st.error(f"**{mes_label_pt(mes)}**: gastou {fmt_brl(abs(row['Saldo']))} a mais", icon=":material/error:")
+                    st.error(f"**{mes_label_pt(mes)}**: gastou {fmt_brl(abs(row['Saldo']))} a mais", icon="🔴")
             if not tem_negativo:
-                st.success("Nenhum mês negativo!", icon=":material/check_circle:")
+                st.success("Nenhum mês negativo!", icon="✅")
 
     with col2:
         with st.container(border=True):
@@ -1022,7 +1022,7 @@ elif pagina == "alertas":
             for i, (cat, val) in enumerate(top_cats.items()):
                 n_meses_total = df['Ano_Mes'].nunique()
                 media = val / n_meses_total
-                st.warning(f"**{medals[i]} {cat}**: {fmt_brl(val)} total ({fmt_brl(media)}/mês)", icon=":material/trending_up:")
+                st.warning(f"**{medals[i]} {cat}**: {fmt_brl(val)} total ({fmt_brl(media)}/mês)", icon="📈")
 
     st.subheader(":material/savings: Onde você pode economizar")
     st.caption("Metas da nossa sessão de planejamento")
