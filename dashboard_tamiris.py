@@ -680,7 +680,7 @@ if pagina == "mes":
                     marker_color=cores_rec[:len(rec_cat)],
                     text=[f"<b>{fmt_brl(v)}</b>" for v in rec_cat.values],
                     textposition='outside',
-                    textfont=dict(size=15, color='#2d3436'),
+                    textfont=dict(size=13, color='#2d3436'),
                     hovertemplate='<b>%{customdata[0]}</b><br>%{customdata[1]}<extra></extra>',
                     customdata=[[cat, fmt_brl(v)] for cat, v in zip(rec_cat.index, rec_cat.values)],
                 )])
@@ -688,12 +688,12 @@ if pagina == "mes":
                 max_val = rec_cat.max()
                 fig_rec.update_layout(
                     height=420,
-                    margin=dict(t=10, b=20, l=10, r=140),
+                    margin=dict(t=10, b=20, l=10, r=10),
                     xaxis_title="",
                     yaxis_title="",
                     showlegend=False,
-                    xaxis=dict(range=[0, max_val * 1.5], visible=False),
-                    yaxis=dict(tickfont=dict(size=15, color='#2d3436')),
+                    xaxis=dict(range=[0, max_val * 2.2], visible=False),
+                    yaxis=dict(tickfont=dict(size=14, color='#2d3436')),
                     paper_bgcolor='rgba(0,0,0,0)',
                     plot_bgcolor='rgba(0,0,0,0)',
                 )
